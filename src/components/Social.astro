@@ -1,0 +1,6 @@
+---
+const { platform, username } = Astro.props;
+const { tgusername } = Astro.props;
+---
+<a href={`https://www.${platform}.com/${username}`}>{platform}</a>
+<a href={`https://t.me/${tgusername}`}>Telegram</a>
