@@ -3,8 +3,6 @@ const { frontmatter } = Astro.props;
 import BaseLayout from "./BaseLayout.astro";
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-<p>Written by {frontmatter.author}</p>
-<p>Written at {frontmatter.pubDate.toString().slice(0, 10)}</p>
 
 <div class="tags">
     {frontmatter.tags.map((tag) => (
