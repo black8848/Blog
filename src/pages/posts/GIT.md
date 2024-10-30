@@ -6,17 +6,12 @@ tags: ["Learn"]
 ---
 
 ## 概念
-
 - 工作区：当前实际工作目录
 - 暂存区：`git add <FileName>`后 <FileName> 被添加到暂存区 `stage` 等待提交
 - 本地库：commit到的地方，本地的库，也即分布式版本控制工具 Git 分布所在地
 - 远程库：远程托管代码平台，如：Github, Gitee
 
-
-
 ***
-
-
 
 ## 版本控制（不包括远程库）
 
@@ -28,26 +23,16 @@ tags: ["Learn"]
 
 `git rm `删除版本库文件
 
-
-
 ***
-
-
 
 `git checkout` 用来切换分支和恢复文件（现已经更新了最新的指令来更清晰的表达功能 ` git switch ` 和  ` git restore` ），目前我的主要使用方面在`git checkout -- <filename>` 方面，其会恢复文件至 `暂存区` 的状态，但当暂存区为空时，Git 默认会恢复到最新提交的状态。
 
-
-
-<p float="left">
+<!-- <p float="left">
   <img src="/Users/fzzz/Documents/MyDocuments/MarkDown文档/GIT.assets/checkout测试.png" width="500" />
   <img src="/Users/fzzz/Documents/MyDocuments/MarkDown文档/GIT.assets/截屏2024-10-19 00.48.37.png" width="400" /> 
-</p>
-
-
+</p> -->
 
 ***
-
-
 
 **重头戏**： `git reset --hard/--soft/--mix(default) HEAD~<number>/commit ID`
 
