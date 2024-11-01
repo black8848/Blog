@@ -1,22 +1,15 @@
 {
-  "name": "",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "concurrently  \"astro dev\" \"npm run start:css\" \"react-scripts start\"",
-    "start:css": "tailwindcss -o src/tailwind.css --watch",
-    "build": "astro build && npm run build:css && react-scripts build",
-    "build:css": "NODE_ENV=production tailwindcss -o src/tailwind.css -m",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/tailwind": "^5.1.2",
-    "astro": "^4.16.7"
-  },
-  "devDependencies": {
-    "@tailwindcss/typography": "^0.5.15",
-    "tailwindcss": "^3.4.14"
+    "name": "",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+      "dev": "astro dev",
+      "start": "astro dev",
+      "build": "astro build",
+      "preview": "astro preview",
+      "astro": "astro"
+    },
+    "dependencies": {
+      "astro": "^4.16.7"
+    }
   }
-}
