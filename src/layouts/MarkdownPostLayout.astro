@@ -1,11 +1,9 @@
 ---
 const { frontmatter } = Astro.props;
-import Prose from "../components/Prose.astro";
+
 import BaseLayout from "./BaseLayout.astro";
 ---
 
-<Prose>
-  <BaseLayout pageTitle={frontmatter.title}>
-    <slot />
-  </BaseLayout>
-</Prose>
+<BaseLayout pageTitle={frontmatter.title}>
+  <slot />
+</BaseLayout>

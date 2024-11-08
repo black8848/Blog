@@ -1,6 +1,6 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import HeaderLayout from "./HeaderLayout.astro";
+import FooterLayout from "./FooterLayout.astro";
 const { pageTitle } = Astro.props;
 ---
 
@@ -13,10 +13,14 @@ const { pageTitle } = Astro.props;
 		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<Header />
-		<h1>{pageTitle}</h1>
-		<slot />
-		<Footer />
+		<HeaderLayout />
+		<div class="prose container mx-auto max-w-4xl">
+			<div class="min-h-screen flex flex-col flex-grow">
+				<h1>{pageTitle}</h1>
+				<slot />
+			</div>
+			<FooterLayout />
+		</div>
 		<script>
 			import "../scripts/menu.js";
 		</script>
