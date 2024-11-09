@@ -1,20 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
 const pageTitle = "Home";
 const allPosts = await Astro.glob("./posts/*.md");
-import BlogPost from "../components/BlogPost.astro";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	<ul>
-		{
-			allPosts.map((post) => (
-				<BlogPost url={post.url} title={post.frontmatter.title} />
-			))
-		}
-	</ul>
+	{
+		allPosts.map((post) => (
+			<BlogPost url={post.url} title={post.frontmatter.title} date={post.frontmatter.pubDate}/>
+		))
+	}
+
 	<script>
 		import "../scripts/menu.js";
 	</script>
 </BaseLayout>
-

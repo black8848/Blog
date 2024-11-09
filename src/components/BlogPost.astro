@@ -1,4 +1,15 @@
 ---
-const { title, url } = Astro.props;
+const { url, title, date } = Astro.props;
+const formattedDate = new Date(date).toLocaleDateString("en-CA");
 ---
-<li><a href={url}>{title}</a></li>
+<div
+  class="text-xl font-semibold flex space-x-8 justify-between no-underline hover"
+>
+  <a href={url} class="no-underline">
+    <span
+      class="text-gray-800 transition-all duration-200 hover:text-blue-500 underline"
+      >{title}</span
+    >
+  </a>
+  <span class="font-mono text-gray-500">{formattedDate}</span>
+</div>
