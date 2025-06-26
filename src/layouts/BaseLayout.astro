@@ -17,8 +17,8 @@ const { pageTitle } = Astro.props;
     <HeaderLayout />
     
     <!-- 内容区域 -->
-    <main class="flex-grow container mx-auto max-w-4xl prose py-8">
-      <h1>{pageTitle}</h1>
+    <main class="flex-grow container mx-auto max-w-4xl prose py-8 px-4">
+      <h1 class="mb-8">{pageTitle}</h1>
       <slot />
     </main>
     

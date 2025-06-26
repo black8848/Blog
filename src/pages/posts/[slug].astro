@@ -1,0 +1,19 @@
+---
+// 不需要导入任何布局，因为 .md 文件已经指定了布局
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob("./*.md");
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.frontmatter.slug || post.url.split("/").pop(),
+    },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = post;
+---
+
+<Content />

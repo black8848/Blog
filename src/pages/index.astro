@@ -3,16 +3,30 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
 const pageTitle = "Home";
 const allPosts = await Astro.glob("./posts/*.md");
+
+// 按发布日期排序，新的文章在前面
+const sortedPosts = allPosts.sort((a, b) => {
+  const dateA = new Date(a.frontmatter.pubDate).getTime();
+  const dateB = new Date(b.frontmatter.pubDate).getTime();
+  return dateB - dateA; // 降序排列，新的在前
+});
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	{
-		allPosts.map((post) => (
-			<BlogPost url={post.url} title={post.frontmatter.title} date={post.frontmatter.pubDate}/>
-		))
-	}
+  <div class="space-y-4">
+    {
+      sortedPosts.map((post) => (
+        <BlogPost
+          url={post.url}
+          title={post.frontmatter.title}
+          date={post.frontmatter.pubDate}
+          slug={post.frontmatter.slug}
+        />
+      ))
+    }
+  </div>
 
-	<script>
-		import "../scripts/menu.js";
-	</script>
+  <script>
+    import "../scripts/menu.js";
+  </script>
 </BaseLayout>

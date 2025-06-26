@@ -1,13 +1,16 @@
 ---
-const { url, title, date } = Astro.props;
+const { url, title, date, slug } = Astro.props;
 const formattedDate = new Date(date).toLocaleDateString("en-CA");
+// 使用 slug 或默认 URL
+const postUrl = slug ? `/posts/${slug}` : url;
 ---
+
 <div
-  class="text-xl font-semibold flex space-x-8 justify-between no-underline hover"
+  class="text-xl font-semibold flex space-x-8 justify-between no-underline mb-4"
 >
-  <a href={url} class="no-underline">
+  <a href={postUrl} class="no-underline">
     <span
-      class="text-gray-800 transition-all duration-200 hover:text-blue-500 underline"
+      class="text-gray-800 transition-all duration-200 hover:text-blue-500 border-b-2 border-transparent hover:border-blue-500"
       >{title}</span
     >
   </a>
