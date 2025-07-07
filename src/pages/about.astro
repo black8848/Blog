@@ -3,4 +3,37 @@ const pageTitle = "About Me";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout pageTitle={pageTitle} />
+<BaseLayout pageTitle={pageTitle}>
+  <div class="prose max-w-none">
+    <p>
+      欢迎来到我的个人博客！我是
+      Flynn。这个博客是我分享技术见解、学习经验和个人思考的地方。
+    </p>
+    <!-- <p>
+      我主要关注 
+      开发领域，包括前端技术、后端架构和用户体验设计。
+    </p>
+
+    <h2>技能</h2>
+    <ul>
+      <li>前端开发: HTML, CSS, JavaScript, React, Vue</li>
+      <li>后端开发: Node.js, Express, Python</li>
+      <li>数据库: MongoDB, MySQL, PostgreSQL</li>
+      <li>工具: Git, Docker, VS Code</li>
+    </ul> -->
+
+    <h2>联系方式</h2>
+    <p>如果您有任何问题或合作意向，欢迎通过以下方式联系我：</p>
+    <ul>
+      <li>Email: fuzixian666@gmail.com</li>
+      <li>
+        GitHub: <a href="https://github.com/black8848" target="_blank"
+          >@black8848</a
+        >
+      </li>
+      <li>
+        Telegram: <a href="https://t.me/flynzx" target="_blank">@flynzx</a>
+      </li>
+    </ul>
+  </div>
+</BaseLayout>

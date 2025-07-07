@@ -1,9 +1,55 @@
 <header class="text-black">
-    <div class="flex justify-between items-center py-4 px-6">
-        <a href="/" class="text-2xl font-bold no-underline">Flynn's Blog</a>
-        <nav class="hidden md:flex space-x-6">
-            <a href="/about" class="hover:text-gray-400 no-underline">About me</a>
-            <a href="/tags" class="hover:text-gray-400 no-underline">Tags</a>
-        </nav>
+  <div class="flex justify-between items-center py-4 px-6">
+    <a href="/" class="text-2xl font-bold no-underline">Flynn's Blog</a>
+    <nav class="flex items-center space-x-6">
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="/about" class="hover:text-gray-400 no-underline">About me</a>
+        <a href="/tags" class="hover:text-gray-400 no-underline">Tags</a>
+      </div>
+      <button
+        id="menu-button"
+        class="md:hidden ml-2 p-2"
+        aria-expanded="false"
+        aria-label="菜单"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </nav>
+  </div>
+
+  <!-- 移动菜单 -->
+  <div id="mobile-menu" class="hidden md:hidden px-6 py-4 bg-white shadow-md">
+    <div class="flex flex-col space-y-4">
+      <a href="/about" class="hover:text-gray-400 no-underline">About me</a>
+      <a href="/tags" class="hover:text-gray-400 no-underline">Tags</a>
     </div>
+  </div>
 </header>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    // 移动菜单切换
+    const menuButton = document.getElementById("menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener("click", () => {
+        const expanded = menuButton.getAttribute("aria-expanded") === "true";
+        menuButton.setAttribute("aria-expanded", !expanded);
+        mobileMenu.classList.toggle("hidden");
+      });
+    }
+  });
+</script>

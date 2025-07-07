@@ -12,21 +12,61 @@ const { pageTitle } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body
+    class="min-h-screen flex flex-col bg-white text-gray-900 transition-colors duration-300"
+  >
     <!-- Header -->
     <HeaderLayout />
-    
+
     <!-- 内容区域 -->
     <main class="flex-grow container mx-auto max-w-4xl prose py-8 px-4">
       <h1 class="mb-8">{pageTitle}</h1>
       <slot />
     </main>
-    
+
+    <!-- 回到顶部按钮 -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-8 right-8 p-2 rounded-full bg-blue-500 text-white shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-600 focus:outline-none"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+      </svg>
+    </button>
+
     <!-- Footer -->
     <FooterLayout />
-    
-    <script>
-      import "../scripts/menu.js";
+
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 回到顶部按钮
+        const backToTopButton = document.getElementById("back-to-top");
+        if (backToTopButton) {
+          window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+              backToTopButton.classList.remove("opacity-0", "invisible");
+              backToTopButton.classList.add("opacity-100", "visible");
+            } else {
+              backToTopButton.classList.add("opacity-0", "invisible");
+              backToTopButton.classList.remove("opacity-100", "visible");
+            }
+          });
+
+          backToTopButton.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+      });
     </script>
   </body>
 </html>

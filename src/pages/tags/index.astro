@@ -2,37 +2,80 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 const allPosts = await Astro.glob("../posts/*.md");
 const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
-const pageTitle = "My Blog";
+const pageTitle = "标签分类";
+
+// 为每个标签计算文章数量
+const tagCounts = tags.reduce((acc, tag) => {
+  const count = allPosts.filter((post) =>
+    post.frontmatter.tags?.includes(tag)
+  ).length;
+  acc[tag] = count;
+  return acc;
+}, {});
+
+// 定义标签颜色
+const tagColors = [
+  "blue",
+  "green",
+  "red",
+  "yellow",
+  "purple",
+  "pink",
+  "indigo",
+  "teal",
+  "orange",
+  "cyan",
+];
+
+// 为每个标签分配一个颜色
+const tagColorMap = tags.reduce((acc, tag, index) => {
+  acc[tag] = tagColors[index % tagColors.length];
+  return acc;
+}, {});
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <div class="tags">
-        {
-            tags.map((tag) => (
-                <p class="tag">
-                    <a href={`/tags/${tag}`}>{tag}</a>
-                </p>
-            ))
-        }
-    </div>
+  <div class="mb-8">
+    <p class="text-gray-600">浏览所有标签分类，点击标签查看相关文章。</p>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+    {
+      tags.map((tag) => {
+        const color = tagColorMap[tag];
+        const count = tagCounts[tag];
+        return (
+          <a
+            href={`/tags/${tag}`}
+            class={`tag-card bg-${color}-50 hover:bg-${color}-100 border-${color}-200 text-${color}-700 transition-all duration-200 no-underline`}
+          >
+            <div class="flex justify-between items-center w-full">
+              <span class="text-lg font-medium truncate mr-3">{tag}</span>
+              <span
+                class={`tag-count flex-shrink-0 bg-${color}-100 text-${color}-800`}
+              >
+                {count}
+              </span>
+            </div>
+          </a>
+        );
+      })
+    }
+  </div>
 </BaseLayout>
 
 <style>
-    a {
-      color: #00539F;
-    }
-  
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-    }
-  
-    .tag {
-      margin: 0.25em;
-      border: dotted 1px #a1a1a1;
-      border-radius: .5em;
-      padding: .5em 1em;
-      font-size: 1.15em;
-      background-color: #F8FCFD;
-    }
-  </style>
+  .tag-card {
+    display: flex;
+    padding: 0.75rem 1rem;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  .tag-count {
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+</style>
