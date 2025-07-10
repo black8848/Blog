@@ -1,3 +1,5 @@
 # My Blog
 
-Still being built
+Welcome to My Blog
+
+Here is Flynn.
