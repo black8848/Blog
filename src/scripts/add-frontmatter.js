@@ -35,6 +35,7 @@ layout: ../../layouts/MarkdownPostLayout.astro
 title: '${title}'
 pubDate: ${formattedDate}
 tags: ["Blog"]
+weight: 0  # 文章权重，用于同日期文章排序，数字越大排序越靠前
 slug: ""  # 请在此处填写英文 slug，如: my-article-name
 ---
 

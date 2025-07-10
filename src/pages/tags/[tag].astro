@@ -48,11 +48,20 @@ const { tag } = Astro.params;
 const { posts, tagColor } = Astro.props;
 
 // 按日期排序
-const sortedPosts = posts.sort(
-  (a, b) =>
-    new Date(b.frontmatter.pubDate).valueOf() -
-    new Date(a.frontmatter.pubDate).valueOf()
-);
+const sortedPosts = posts.sort((a, b) => {
+  const dateA = new Date(a.frontmatter.pubDate).valueOf();
+  const dateB = new Date(b.frontmatter.pubDate).valueOf();
+
+  // 如果日期相同，则按权重排序（权重大的排前面）
+  if (dateA === dateB) {
+    // 获取权重，如果不存在则默认为0
+    const weightA = a.frontmatter.weight || 0;
+    const weightB = b.frontmatter.weight || 0;
+    return weightB - weightA;
+  }
+
+  return dateB - dateA;
+});
 ---
 
 <BaseLayout pageTitle={`标签: ${tag}`}>
