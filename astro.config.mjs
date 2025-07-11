@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config'
 import tailwind from '@astrojs/tailwind';
+import remarkFootnotes from 'remark-footnotes';
 
 export default defineConfig({
   // your configuration options here...
@@ -9,7 +10,7 @@ export default defineConfig({
   
   // 配置文章 URL 格式
   markdown: {
-    remarkPlugins: [],
+    remarkPlugins: [[remarkFootnotes, { inlineNotes: true }]],
     rehypePlugins: []
   }
 })
