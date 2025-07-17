@@ -23,3 +23,9 @@
 1. [鸵鸟算法 - 维基百科](https://zh.wikipedia.org/wiki/%E9%B8%B5%E9%B8%9F%E7%AE%97%E6%B3%95)
 
 2. [Bogo排序 - 维基百科](https://zh.wikipedia.org/wiki/Bogo%E6%8E%92%E5%BA%8F)
+
+### 四、Code Writer to Code Editor - About AI
+
+1. [The Agentic Software Engineer - Tim Sehn - dolthub](https://www.dolthub.com/blog/2025-07-02-the-agentic-software-engineer/)
+
+2. [AI正在重写“软件工程师”的岗位描述：未来你需要这6项核心技能 - Tonybai - 微信公众平台](https://mp.weixin.qq.com/s/9Nyt3-7QTLs4zFOdE-QKLA)
