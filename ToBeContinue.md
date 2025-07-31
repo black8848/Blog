@@ -22,6 +22,8 @@
 
 1. [鸵鸟算法 - 维基百科](https://zh.wikipedia.org/wiki/%E9%B8%B5%E9%B8%9F%E7%AE%97%E6%B3%95)
 
+![鸵鸟](https://web.archive.org/web/20180820080310/http://s1.51cto.com/wyfs02/M01/9E/9D/wKiom1mTFibRswjGAABWywPQ92Q868.jpg)
+
 2. [Bogo排序 - 维基百科](https://zh.wikipedia.org/wiki/Bogo%E6%8E%92%E5%BA%8F)
 
 ### 四、Code Writer to Code Editor - About AI
@@ -29,3 +31,13 @@
 1. [The Agentic Software Engineer - Tim Sehn - dolthub](https://www.dolthub.com/blog/2025-07-02-the-agentic-software-engineer/)
 
 2. [AI正在重写“软件工程师”的岗位描述：未来你需要这6项核心技能 - Tonybai - 微信公众平台](https://mp.weixin.qq.com/s/9Nyt3-7QTLs4zFOdE-QKLA)
+
+### 五、不同材质的桌子、松木、橡木、樱桃木、黑胡桃木
+
+1. [木材种类知多少](https://web.archive.org/web/20110723154828/http://jiaju.inhe.net/html/200712/26/20071226085200.htm)
+
+2. [實木桌挑選指南，購買前應先了解桌板的 4 個觀念](https://www.stimlig.com/solid-wood-table/?srsltid=AfmBOoqYd87qlxa-1Vd0yLa9puun9AxnzFlSxLWlOf-t0UIYbUb1Pw9v)
+
+### 六、Linux、GND、Unix、类Unix、XOS、Android
+
+### 七、NAT 地址、IPv4、IPv6，中美两国现阶段差距
