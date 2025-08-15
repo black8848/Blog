@@ -32,7 +32,7 @@
 
 2. [AI正在重写“软件工程师”的岗位描述：未来你需要这6项核心技能 - Tonybai - 微信公众平台](https://mp.weixin.qq.com/s/9Nyt3-7QTLs4zFOdE-QKLA)
 
-### 五、不同材质的桌子、松木、橡木、樱桃木、黑胡桃木
+### 五、木材
 
 1. [木材种类知多少](https://web.archive.org/web/20110723154828/http://jiaju.inhe.net/html/200712/26/20071226085200.htm)
 
@@ -43,3 +43,7 @@
 ### 七、NAT 地址、IPv4、IPv6，中美两国现阶段差距
 
 ### 八、科学上网的历史、科学上网的原理
+
+### 九、Prompt Engineering Guide 提示词工程
+
+1. [Prompt Engineering Guide](https://www.promptingguide.ai/zh)
