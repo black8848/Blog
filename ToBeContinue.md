@@ -47,3 +47,9 @@
 ### 九、Prompt Engineering Guide 提示词工程
 
 1. [Prompt Engineering Guide](https://www.promptingguide.ai/zh)
+
+### 十、POST、GET等的http协议内容深入了解
+
+### 十一、具深智能
+
+1. [具身智能 (Embodied AI)概述](https://zhuanlan.zhihu.com/p/620342675)
