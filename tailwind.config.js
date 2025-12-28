@@ -48,6 +48,18 @@ module.exports = {
                 borderBottomColor: theme('colors.blue.600'),
               },
             },
+            h2: {
+              marginTop: theme('spacing.10'),
+              marginBottom: theme('spacing.4'),
+            },
+            h3: {
+              marginTop: theme('spacing.8'),
+              marginBottom: theme('spacing.3'),
+            },
+            h4: {
+              marginTop: theme('spacing.6'),
+              marginBottom: theme('spacing.2'),
+            },
           },
         },
         invert: {
