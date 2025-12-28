@@ -39,12 +39,27 @@ module.exports = {
               backgroundColor: 'transparent',
               padding: '0',
             },
+            a: {
+              color: theme('colors.blue.600'),
+              textDecoration: 'none',
+              borderBottom: '1px solid transparent',
+              transition: 'border-color 0.2s',
+              '&:hover': {
+                borderBottomColor: theme('colors.blue.600'),
+              },
+            },
           },
         },
         invert: {
           css: {
             code: {
               backgroundColor: theme('colors.neutral.800'),
+            },
+            a: {
+              color: theme('colors.blue.400'),
+              '&:hover': {
+                borderBottomColor: theme('colors.blue.400'),
+              },
             },
           },
         },
