@@ -41,17 +41,19 @@ const years = Object.keys(postsByYear)
 
 <BaseLayout pageTitle={pageTitle}>
   {
-    years.map((year) => (
-      <div class="mb-10">
+    years.map((year, yearIndex) => (
+      <div class="mb-10 animate-fade-in" style={`animation-delay: ${yearIndex * 100}ms`}>
         <h1 class="mb-8 text-3xl font-bold text-gray-600 dark:text-gray-400">{year}</h1>
         <div class="space-y-4">
-          {postsByYear[year].map((post) => (
-            <BlogPost
-              url={post.url}
-              title={post.frontmatter.title}
-              date={post.frontmatter.pubDate}
-              slug={post.frontmatter.slug}
-            />
+          {postsByYear[year].map((post, postIndex) => (
+            <div class="animate-fade-in" style={`animation-delay: ${yearIndex * 100 + (postIndex + 1) * 50}ms`}>
+              <BlogPost
+                url={post.url}
+                title={post.frontmatter.title}
+                date={post.frontmatter.pubDate}
+                slug={post.frontmatter.slug}
+              />
+            </div>
           ))}
         </div>
       </div>
@@ -62,3 +64,20 @@ const years = Object.keys(postsByYear)
     import "../scripts/menu.js";
   </script>
 </BaseLayout>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out forwards;
+    opacity: 0;
+  }
+</style>
