@@ -1,7 +1,6 @@
 ---
 import HeaderLayout from "./HeaderLayout.astro";
 import FooterLayout from "./FooterLayout.astro";
-import { ViewTransitions } from "astro:transitions";
 const { pageTitle } = Astro.props;
 const { siteTitle = "Flynn's Blog" } = Astro.props;
 ---
@@ -19,7 +18,6 @@ const { siteTitle = "Flynn's Blog" } = Astro.props;
       rel="stylesheet"
     />
     <title>{siteTitle}</title>
-    <ViewTransitions />
     <script is:inline>
       // 在页面加载前立即设置主题，避免闪烁
       (function() {
