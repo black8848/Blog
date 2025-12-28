@@ -9,9 +9,42 @@ module.exports = {
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
+            lineHeight: '1.8',
+            p: {
+              marginTop: theme('spacing.5'),
+              marginBottom: theme('spacing.5'),
+            },
             hr: {
               marginTop: theme('spacing.6'),
               marginBottom: theme('spacing.6'),
+            },
+            code: {
+              backgroundColor: theme('colors.gray.100'),
+              padding: '0.2em 0.4em',
+              borderRadius: '0.25rem',
+              fontWeight: '400',
+            },
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+            pre: {
+              backgroundColor: theme('colors.gray.900'),
+              borderRadius: '0.5rem',
+              padding: theme('spacing.5'),
+            },
+            'pre code': {
+              backgroundColor: 'transparent',
+              padding: '0',
+            },
+          },
+        },
+        invert: {
+          css: {
+            code: {
+              backgroundColor: theme('colors.neutral.800'),
             },
           },
         },

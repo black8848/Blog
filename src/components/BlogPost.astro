@@ -9,24 +9,6 @@ const postUrl = slug ? `/posts/${slug}` : url;
   class="text-xl font-semibold flex space-x-8 justify-between no-underline mb-4"
 >
   <a href={postUrl} class="no-underline">
-    <!-- 
-      修改字体样式 - 在下方 span 标签的 class 中添加以下类名之一来更换标题字体:
-      
-      系统默认字体:
-      font-serif: 衬线字体 (如: Times New Roman)
-      font-sans: 无衬线字体 (如: Arial, Helvetica)
-      font-mono: 等宽字体 (如: Courier New)
-      
-      使用自定义字体:
-      1. 在 tailwind.config.js 的 theme.extend.fontFamily 中添加自定义字体
-      2. 然后在这里使用对应的类名
-      
-      示例:
-      class="text-gray-800 ... font-serif"  // 使用衬线字体
-      class="text-gray-800 ... font-sans"   // 使用无衬线字体
-      class="text-gray-800 ... font-mono"   // 使用等宽字体
-      class="text-gray-800 ... font-custom" // 使用自定义字体
-    -->
     <span
       class="font-serif text-gray-800 dark:text-gray-200 transition-all duration-200 hover:text-blue-500 dark:hover:text-blue-400 border-b-2 border-transparent hover:border-blue-500 dark:hover:border-blue-400"
       >{title}</span
