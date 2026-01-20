@@ -11,9 +11,9 @@
     "add-frontmatter": "node src/scripts/add-frontmatter.js"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/tailwind": "^5.1.4",
-    "astro": "^5.10.1",
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.16.11",
     "rehype-external-links": "^3.0.0",
     "remark-footnotes": "^4.0.1",
     "tailwindcss": "^3.4.17",
