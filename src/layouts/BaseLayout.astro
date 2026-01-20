@@ -36,7 +36,7 @@ const { siteTitle = "Flynn's Blog" } = Astro.props;
 
     <!-- 内容区域 -->
     <main class="flex-grow container mx-auto max-w-4xl prose dark:prose-invert py-8 px-4">
-      <h1 class="mb-8">{pageTitle}</h1>
+      {pageTitle && <h1 class="mb-8">{pageTitle}</h1>}
       <slot />
     </main>
 
