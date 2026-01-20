@@ -3,6 +3,7 @@ import HeaderLayout from "./HeaderLayout.astro";
 import FooterLayout from "./FooterLayout.astro";
 const { pageTitle } = Astro.props;
 const { siteTitle = "Flynn's Blog" } = Astro.props;
+const { description = "Flynn 的个人博客，分享技术与生活" } = Astro.props;
 ---
 
 <html lang="zh-CN" class="">
@@ -10,6 +11,7 @@ const { siteTitle = "Flynn's Blog" } = Astro.props;
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
