@@ -20,6 +20,10 @@ const { description = "Flynn 的个人博客，分享技术与生活" } = Astro.
       rel="stylesheet"
     />
     <title>{pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle}</title>
+    <!-- Open Graph -->
+    <meta property="og:title" content={pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
     <script is:inline>
       // 在页面加载前立即设置主题，避免闪烁
       (function() {
