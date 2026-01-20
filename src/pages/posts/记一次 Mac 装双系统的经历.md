@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: "记一次Mac装双系统的经历"
+title: "记一次 Mac 装双系统的经历"
 tags: ["系统"]
 pubDate: 2022-03-18 20:42:29
 weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前

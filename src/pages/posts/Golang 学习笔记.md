@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: "Golang学习笔记"
+title: "Golang 学习笔记"
 pubDate: 2022-03-23 19:46:04
 tags: ["Golang"]
 weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前

@@ -4,11 +4,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['"Noto Serif"', 'Georgia', '"Times New Roman"', 'Times', 'serif'],
+        serif: ['"Source Serif 4"', 'Georgia', '"Times New Roman"', 'Times', 'serif'],
       },
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
+            fontFamily: '"Source Serif 4", Georgia, serif',
             lineHeight: '1.8',
             p: {
               marginTop: theme('spacing.5'),
