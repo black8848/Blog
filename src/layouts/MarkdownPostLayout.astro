@@ -1,9 +1,15 @@
 ---
-const { frontmatter } = Astro.props;
+const { frontmatter, headings } = Astro.props;
 
 import BaseLayout from "./BaseLayout.astro";
+import TableOfContents from "../components/TableOfContents.astro";
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-  <slot />
+  <div class="relative">
+    <slot />
+    <aside class="absolute left-full ml-8">
+      <TableOfContents headings={headings} />
+    </aside>
+  </div>
 </BaseLayout>

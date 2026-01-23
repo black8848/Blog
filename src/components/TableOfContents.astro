@@ -1,0 +1,26 @@
+---
+const { headings } = Astro.props;
+// 只显示 h2 和 h3
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+{toc.length > 0 && (
+  <nav class="toc hidden xl:block fixed top-24 w-56 text-sm">
+    <p class="font-semibold text-gray-700 dark:text-gray-300 mb-3">目录</p>
+    <ul class="space-y-2 border-l border-gray-200 dark:border-neutral-700">
+      {toc.map((heading) => (
+        <li>
+          <a
+            href={`#${heading.slug}`}
+            class:list={[
+              "block py-1 text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors",
+              heading.depth === 2 ? "pl-3" : "pl-6",
+            ]}
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
