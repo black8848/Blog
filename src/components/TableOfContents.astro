@@ -7,7 +7,7 @@ const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 4);
 {toc.length > 0 && (
   <nav class="toc hidden xl:block fixed top-24 w-56 text-sm">
     <p class="font-semibold text-gray-700 dark:text-gray-300 mb-3">目录</p>
-    <ul class="space-y-2 border-l border-gray-200 dark:border-neutral-700">
+    <ul class="space-y-2">
       {toc.map((heading) => (
         <li>
           <a
@@ -15,9 +15,9 @@ const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 4);
             data-slug={heading.slug}
             class:list={[
               "toc-link block py-1 text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors",
-              heading.depth === 2 && "pl-3",
-              heading.depth === 3 && "pl-6",
-              heading.depth === 4 && "pl-9 text-xs",
+              heading.depth === 2 && "pl-0",
+              heading.depth === 3 && "pl-3",
+              heading.depth === 4 && "pl-6 text-xs",
             ]}
           >
             {heading.text}
