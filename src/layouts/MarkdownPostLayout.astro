@@ -8,7 +8,7 @@ import TableOfContents from "../components/TableOfContents.astro";
 <BaseLayout pageTitle={frontmatter.title}>
   <div class="relative">
     <slot />
-    <aside class="absolute left-full ml-8">
+    <aside class="absolute left-full ml-16">
       <TableOfContents headings={headings} />
     </aside>
   </div>
