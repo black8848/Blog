@@ -5,7 +5,7 @@ const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 4);
 ---
 
 {toc.length > 0 && (
-  <nav class="toc hidden xl:block fixed top-24 w-56 text-sm">
+  <nav class="toc not-prose hidden xl:block fixed top-24 w-56 text-sm">
     <p class="font-semibold text-gray-700 dark:text-gray-300 mb-3">目录</p>
     <ul class="space-y-2">
       {toc.map((heading) => (
