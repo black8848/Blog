@@ -1,10 +1,10 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "蓝桥杯——关于我第一次竞赛的尝试"
+description: "我深知自主学习的重要性，所以此次获悉到有这样一次全国性的竞赛，我就决心参加了，能获得个名次固然是好的，但我报名的另外一些原因有如下几点"
+pubDate: 2021-12-11
 tags: ["比赛"]
-pubDate: 2021-12-11 23:17:41
-weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "Blue-Bridge-Cup" # 请在此处填写英文 slug，如: my-article-name
+weight: 1
+draft: true
 ---
 #### 我深知自主学习的重要性，所以此次获悉到有这样一次全国性的竞赛，我就决心参加了，能获得个名次固然是好的，但我报名的另外一些原因有如下几点
 

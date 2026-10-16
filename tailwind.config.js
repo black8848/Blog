@@ -1,15 +1,25 @@
+const serif = [
+  '"Source Serif 4 Variable"',
+  '"Songti SC"',
+  '"Noto Serif CJK SC"',
+  '"Source Han Serif SC"',
+  'Georgia',
+  '"Times New Roman"',
+  'serif',
+];
+
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
-        serif: ['"Source Serif 4"', 'Georgia', '"Times New Roman"', 'Times', 'serif'],
+        serif,
       },
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
-            fontFamily: '"Source Serif 4", Georgia, serif',
+            fontFamily: serif.join(', '),
             lineHeight: '1.8',
             p: {
               marginTop: theme('spacing.5'),
@@ -32,7 +42,6 @@ module.exports = {
               content: '""',
             },
             pre: {
-              backgroundColor: theme('colors.gray.900'),
               borderRadius: '0.5rem',
               padding: theme('spacing.5'),
             },

@@ -1,83 +1,31 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import BlogPost from "../components/BlogPost.astro";
-const pageTitle = "";
-const allPosts = await Astro.glob("./posts/*.md");
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogPost from '../components/BlogPost.astro';
+import { groupPostsByYear, postPath, publishedPosts } from '../lib/posts';
 
-// 按发布日期排序，新的文章在前面，同一天则按权重排序
-const sortedPosts = allPosts.sort((a, b) => {
-  const dateA = new Date(a.frontmatter.pubDate).getTime();
-  const dateB = new Date(b.frontmatter.pubDate).getTime();
-
-  // 如果日期相同，则按权重排序（权重大的排前面）
-  if (dateA === dateB) {
-    // 获取权重，如果不存在则默认为0
-    const weightA = a.frontmatter.weight || 0;
-    const weightB = b.frontmatter.weight || 0;
-    return weightB - weightA;
-  }
-
-  // 日期不同则按日期排序
-  return dateB - dateA; // 降序排列，新的在前
-});
-
-// 按年份对文章进行分组
-const postsByYear = {};
-sortedPosts.forEach((post) => {
-  const year = new Date(post.frontmatter.pubDate).getFullYear();
-  const yearKey = year.toString();
-  if (!postsByYear[yearKey]) {
-    postsByYear[yearKey] = [];
-  }
-  postsByYear[yearKey].push(post);
-});
-
-// 获取年份并排序（降序）
-const years = Object.keys(postsByYear)
-  .map((year) => parseInt(year))
-  .sort((a, b) => b - a)
-  .map((year) => year.toString());
+const posts = await publishedPosts();
+const years = groupPostsByYear(posts);
+const yearDelayMs = 100;
+const postDelayMs = 50;
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout showTitle={false}>
+  <h1 class="sr-only">全部文章</h1>
   {
-    years.map((year, yearIndex) => (
-      <div class="mb-10 animate-fade-in" style={`animation-delay: ${yearIndex * 100}ms`}>
-        <h1 class="mb-8 text-3xl font-bold text-gray-600 dark:text-gray-400">{year}</h1>
+    years.map((group, yearIndex) => (
+      <section class="mb-10 animate-fade-in" style={`animation-delay: ${yearIndex * yearDelayMs}ms`}>
+        <h2 class="mb-8 font-serif text-3xl font-bold text-gray-600 dark:text-gray-400">{group.year}</h2>
         <div class="space-y-4">
-          {postsByYear[year].map((post, postIndex) => (
-            <div class="animate-fade-in" style={`animation-delay: ${yearIndex * 100 + (postIndex + 1) * 50}ms`}>
-              <BlogPost
-                url={post.url}
-                title={post.frontmatter.title}
-                date={post.frontmatter.pubDate}
-                slug={post.frontmatter.slug}
-              />
+          {group.posts.map((post, postIndex) => (
+            <div
+              class="animate-fade-in"
+              style={`animation-delay: ${yearIndex * yearDelayMs + (postIndex + 1) * postDelayMs}ms`}
+            >
+              <BlogPost href={postPath(post)} title={post.data.title} date={post.data.pubDate} />
             </div>
           ))}
         </div>
-      </div>
+      </section>
     ))
   }
-
-  <script>
-    import "../scripts/menu.js";
-  </script>
 </BaseLayout>
-
-<style>
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .animate-fade-in {
-    animation: fade-in 0.4s ease-out forwards;
-    opacity: 0;
-  }
-</style>

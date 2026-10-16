@@ -1,81 +1,43 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-const allPosts = await Astro.glob("../posts/*.md");
-const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
-const pageTitle = "标签分类";
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { publishedPosts } from '../../lib/posts';
+import { tagPalette, tagPath } from '../../lib/tags';
 
-// 为每个标签计算文章数量
-const tagCounts = tags.reduce((acc, tag) => {
-  const count = allPosts.filter((post) =>
-    post.frontmatter.tags?.includes(tag)
-  ).length;
-  acc[tag] = count;
-  return acc;
-}, {});
+const posts = await publishedPosts();
+const counts = new Map<string, number>();
+for (const post of posts) {
+  for (const tag of post.data.tags) {
+    counts.set(tag, (counts.get(tag) ?? 0) + 1);
+  }
+}
 
-// 定义标签颜色
-const tagColors = [
-  "blue",
-  "green",
-  "red",
-  "yellow",
-  "purple",
-  "pink",
-  "indigo",
-  "teal",
-  "orange",
-  "cyan",
-];
-
-// 为每个标签分配一个颜色
-const tagColorMap = tags.reduce((acc, tag, index) => {
-  acc[tag] = tagColors[index % tagColors.length];
-  return acc;
-}, {});
+const tags = [...counts.entries()].sort(
+  (left, right) => right[1] - left[1] || left[0].localeCompare(right[0], 'zh-CN'),
+);
+const pageTitle = '标签分类';
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <div class="mb-8">
-    <p class="text-gray-600 dark:text-gray-400">浏览所有标签分类，点击标签查看相关文章。</p>
-  </div>
-
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+<BaseLayout pageTitle={pageTitle} description="浏览所有标签分类，点击标签查看相关文章。">
+  <p class="mb-8 text-gray-600 dark:text-gray-400">浏览所有标签分类，点击标签查看相关文章。</p>
+  <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
     {
-      tags.map((tag) => {
-        const color = tagColorMap[tag];
-        const count = tagCounts[tag];
+      tags.map(([tag, count]) => {
+        const palette = tagPalette(tag);
         return (
           <a
-            href={`/tags/${tag}`}
-            class={`tag-card bg-${color}-50 hover:bg-${color}-100 border-${color}-200 text-${color}-700 transition-all duration-200 no-underline`}
+            href={tagPath(tag)}
+            class:list={[
+              'flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-lg border px-4 py-3 no-underline shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400',
+              palette.card,
+            ]}
           >
-            <div class="flex justify-between items-center w-full">
-              <span class="text-lg font-medium truncate mr-3">{tag}</span>
-              <span
-                class={`tag-count flex-shrink-0 bg-${color}-100 text-${color}-800`}
-              >
-                {count}
-              </span>
-            </div>
+            <span class="truncate text-lg font-medium">{tag}</span>
+            <span class:list={['shrink-0 rounded-full px-2 py-0.5 text-xs font-medium', palette.badge]}>
+              {count}
+            </span>
           </a>
         );
       })
     }
   </div>
 </BaseLayout>
-
-<style>
-  .tag-card {
-    display: flex;
-    padding: 0.75rem 1rem;
-    border: 1px solid;
-    border-radius: 0.5rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  }
-  .tag-count {
-    padding: 0.25rem 0.5rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 500;
-  }
-</style>

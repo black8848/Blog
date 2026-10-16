@@ -1,10 +1,10 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "About Fzx & Lyn"
+description: "我们相识于2017年9月份开学季，"
+pubDate: 2021-11-30
 tags: ["❤"]
-pubDate: 2021-11-30 23:10:33
-weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "About-Fzx-&-Lyn" # 请在此处填写英文 slug，如: my-article-name
+weight: 1
+draft: true
 ---
 
 - 我们相识于2017年9月份开学季，

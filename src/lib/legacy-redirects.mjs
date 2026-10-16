@@ -1,0 +1,23 @@
+export const legacyPostRedirects = {
+  "/posts/2025 年终总结": "/posts/2025-annually",
+  "/posts/About  Fzx & Lyn": "/posts/about-fzx-and-lyn",
+  "/posts/About-Fzx-&-Lyn": "/posts/about-fzx-and-lyn",
+  "/posts/About-Fzx-%26-Lyn": "/posts/about-fzx-and-lyn",
+  "/posts/Golang 学习笔记": "/posts/Golang-Study-Notes",
+  "/posts/《我的最后一本减肥书》读书笔记": "/posts/My-Notes-on-My-Last-Diet-Book",
+  "/posts/一些名字的由来": "/posts/SomeNames",
+  "/posts/公正": "/posts/Impartiality",
+  "/posts/因 Minecraft 而起的内存升级大乌龙": "/posts/The-Great-Memory-Upgrade-Fiasco-Caused-by-Minecraft",
+  "/posts/姥姥与我": "/posts/Grandma-and-Me",
+  "/posts/我的大一生活": "/posts/My-Freshman-Year",
+  "/posts/时间有的是，就是缺石头": "/posts/Time-and-stones",
+  "/posts/月亮与六便士": "/posts/Moon-and-Sixpence",
+  "/posts/英语": "/posts/English",
+  "/posts/蓝桥杯——关于我第一次竞赛的尝试": "/posts/Blue-Bridge-Cup",
+  "/posts/记一次 Mac 装双系统的经历": "/posts/Recounting-My-Experience-Installing-a-Dual-Boot-System-on-a-Mac",
+  "/posts/记录日常-大一上学期的最后二十天": "/posts/Meet",
+  "/posts/过往": "/posts/PastDays",
+  "/posts/难忘的十个月": "/posts/Nine-months-of-home-life",
+  "/posts/静心": "/posts/peace",
+  "/posts/靠什么证明自己来过": "/posts/Learn_to_Summarize"
+};

@@ -1,10 +1,10 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "一些名字的由来"
+description: "我以前有个很有意思的名字，叫Black_rice，是在初一的一节自习课上给自己取的。"
+pubDate: 2022-06-11
 tags: ["日常"]
-pubDate: 2022-06-11 10:47:20
-weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "SomeNames" # 请在此处填写英文 slug，如: my-article-name
+weight: 1
+draft: true
 ---
 
 ### Black_rice

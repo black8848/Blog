@@ -1,10 +1,9 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "月亮与六便士"
+description: "最近读完了月亮与六便士，于是萌生想法想记录下这次读书笔记，我的文笔并不好，写出的内容就好像只是在平铺直叙，望谅解。"
+pubDate: 2022-04-08
 tags: ["文学"]
-pubDate: 2022-04-08 08:20:56
-weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "Moon-and-Sixpence" # 请在此处填写英文 slug，如: my-article-name
+weight: 1
 ---
 最近读完了月亮与六便士，于是萌生想法想记录下这次读书笔记，我的文笔并不好，写出的内容就好像只是在平铺直叙，望谅解。 
 

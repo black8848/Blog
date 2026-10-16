@@ -1,111 +1,46 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import BlogPost from "../../components/BlogPost.astro";
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPost from '../../components/BlogPost.astro';
+import { comparePosts, postPath, publishedPosts } from '../../lib/posts';
+import { tagPalette } from '../../lib/tags';
 
 export async function getStaticPaths() {
-  const allPosts = await Astro.glob("../posts/*.md");
-
-  // 获取所有唯一标签
-  const uniqueTags = [
-    ...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
-  ];
-
-  // 定义标签颜色
-  const tagColors = [
-    "blue",
-    "green",
-    "red",
-    "yellow",
-    "purple",
-    "pink",
-    "indigo",
-    "teal",
-    "orange",
-    "cyan",
-  ];
-
-  // 为每个标签分配一个颜色
-  const tagColorMap = uniqueTags.reduce((acc, tag, index) => {
-    acc[tag] = tagColors[index % tagColors.length];
-    return acc;
-  }, {});
-
-  return uniqueTags.map((tag) => {
-    const filteredPosts = allPosts.filter((post) =>
-      post.frontmatter.tags?.includes(tag)
-    );
-    return {
-      params: { tag },
-      props: {
-        posts: filteredPosts,
-        tagColor: tagColorMap[tag],
-      },
-    };
-  });
+  const posts = await publishedPosts();
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+  return tags.map((tag) => ({
+    params: { tag },
+    props: {
+      posts: posts.filter((post) => post.data.tags.includes(tag)).sort(comparePosts),
+    },
+  }));
 }
 
-const { tag } = Astro.params;
-const { posts, tagColor } = Astro.props;
-
-// 按日期排序
-const sortedPosts = posts.sort((a, b) => {
-  const dateA = new Date(a.frontmatter.pubDate).valueOf();
-  const dateB = new Date(b.frontmatter.pubDate).valueOf();
-
-  // 如果日期相同，则按权重排序（权重大的排前面）
-  if (dateA === dateB) {
-    // 获取权重，如果不存在则默认为0
-    const weightA = a.frontmatter.weight || 0;
-    const weightB = b.frontmatter.weight || 0;
-    return weightB - weightA;
-  }
-
-  return dateB - dateA;
-});
+const tag = Astro.params.tag;
+if (!tag) throw new Error('缺少标签参数');
+const { posts } = Astro.props;
+const palette = tagPalette(tag);
 ---
 
-<BaseLayout pageTitle={`标签: ${tag}`}>
-  <div class="mb-8">
-    <div class="flex items-center gap-4">
-      <a
-        href="/tags"
-        class="text-blue-500 hover:text-blue-700 flex items-center gap-1 no-underline"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-4 w-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-        </svg>
-        返回所有标签
-      </a>
-      <span
-        class={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-${tagColor}-100 text-${tagColor}-800`}
-      >
-        {tag}
-      </span>
-      <span class="text-gray-500 dark:text-gray-400">
-        {posts.length} 篇文章
-      </span>
-    </div>
+<BaseLayout pageTitle={`标签：${tag}`} description={`标签「${tag}」下的 ${posts.length} 篇文章`}>
+  <div class="mb-8 flex flex-wrap items-center gap-4">
+    <a
+      href="/tags"
+      class="inline-flex min-h-11 items-center gap-1 text-blue-600 no-underline hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 dark:text-blue-400"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+      </svg>
+      返回所有标签
+    </a>
+    <span class:list={['inline-flex items-center rounded-full px-3 py-1 text-sm font-medium', palette.badge]}>
+      {tag}
+    </span>
+    <span class="text-gray-500 dark:text-gray-400">{posts.length} 篇文章</span>
   </div>
-
   <div class="space-y-6">
     {
-      sortedPosts.map((post) => (
-        <BlogPost
-          url={post.url}
-          title={post.frontmatter.title}
-          date={post.frontmatter.pubDate}
-          slug={post.frontmatter.slug}
-        />
+      posts.map((post) => (
+        <BlogPost href={postPath(post)} title={post.data.title} date={post.data.pubDate} />
       ))
     }
   </div>

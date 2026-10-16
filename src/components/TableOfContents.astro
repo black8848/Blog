@@ -1,76 +1,69 @@
 ---
+import type { MarkdownHeading } from 'astro';
+import TocLinks from './TocLinks.astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
 const { headings } = Astro.props;
-// 显示 h2、h3、h4
-const toc = headings.filter((h) => h.depth >= 2 && h.depth <= 4);
+const minDepth = 2;
+const maxDepth = 4;
+const toc = headings.filter((heading) => heading.depth >= minDepth && heading.depth <= maxDepth);
 ---
 
-{toc.length > 0 && (
-  <nav class="toc not-prose hidden xl:block fixed top-24 w-56 text-sm">
-    <p class="font-semibold text-gray-700 dark:text-gray-300 mb-3">目录</p>
-    <ul class="space-y-2">
-      {toc.map((heading) => (
-        <li>
-          <a
-            href={`#${heading.slug}`}
-            data-slug={heading.slug}
-            class:list={[
-              "toc-link block py-1 text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors",
-              heading.depth === 2 && "pl-0",
-              heading.depth === 3 && "pl-3",
-              heading.depth === 4 && "pl-6 text-xs",
-            ]}
-          >
-            {heading.text}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </nav>
-)}
+{
+  toc.length > 0 && (
+    <nav
+      class="toc not-prose fixed top-24 left-[calc(50%+31rem)] hidden w-56 text-sm xl:block"
+      aria-label="目录"
+    >
+      <p class="mb-3 font-semibold text-gray-700 dark:text-gray-300">目录</p>
+      <TocLinks headings={toc} />
+    </nav>
+  )
+}
 
 <script>
-  function initTOC() {
-    const tocLinks = document.querySelectorAll('.toc-link');
+  const rootMargin = '-80px 0px -70% 0px';
+
+  function initToc() {
+    const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
     if (tocLinks.length === 0) return;
 
-    const headings = Array.from(tocLinks).map((link) => {
-      const slug = link.getAttribute('data-slug');
-      return document.getElementById(slug);
-    }).filter(Boolean);
+    const headings = [
+      ...new Map(
+        Array.from(tocLinks)
+          .map((link) => document.getElementById(link.dataset.slug ?? ''))
+          .filter((heading): heading is HTMLElement => heading !== null)
+          .map((heading) => [heading.id, heading]),
+      ).values(),
+    ];
 
     if (headings.length === 0) return;
 
     const setActive = (slug: string) => {
       tocLinks.forEach((link) => {
-        if (link.getAttribute('data-slug') === slug) {
-          link.classList.add('text-blue-500', 'dark:text-blue-400', 'font-medium');
-          link.classList.remove('text-gray-500', 'dark:text-gray-400');
-        } else {
-          link.classList.remove('text-blue-500', 'dark:text-blue-400', 'font-medium');
-          link.classList.add('text-gray-500', 'dark:text-gray-400');
-        }
+        const active = link.dataset.slug === slug;
+        link.classList.toggle('text-blue-500', active);
+        link.classList.toggle('dark:text-blue-400', active);
+        link.classList.toggle('font-medium', active);
+        link.classList.toggle('text-gray-500', !active);
+        link.classList.toggle('dark:text-gray-400', !active);
       });
     };
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
+          if (entry.isIntersecting) setActive(entry.target.id);
         });
       },
-      {
-        rootMargin: '-80px 0px -70% 0px',
-        threshold: 0,
-      }
+      { rootMargin, threshold: 0 },
     );
 
     headings.forEach((heading) => observer.observe(heading));
   }
 
-  // 初始化
-  initTOC();
-  // Astro 页面切换时重新初始化
-  document.addEventListener('astro:page-load', initTOC);
+  initToc();
 </script>

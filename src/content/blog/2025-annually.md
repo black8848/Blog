@@ -1,10 +1,9 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "2025 年终总结"
+description: "我的2025，略有遗憾，不失圆满"
 pubDate: 2025-12-21
 tags: ["annually"]
-weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "2025-annually" # 请在此处填写英文 slug，如: my-article-name
+weight: 1
 ---
 
 

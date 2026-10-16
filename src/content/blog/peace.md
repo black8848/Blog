@@ -1,10 +1,9 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "静心"
+description: "思虑的事情太多、担忧的事太多，算了不要再想还没发生的事了，静心于当下吧。"
 pubDate: 2025-07-09
 tags: ["Blog"]
-weight: 0 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "peace" # 请在此处填写英文 slug，如: my-article-name
+weight: 0
 ---
 
 思虑的事情太多、担忧的事太多，算了不要再想还没发生的事了，静心于当下吧。

@@ -1,94 +1,85 @@
 ---
-import HeaderLayout from "./HeaderLayout.astro";
-import FooterLayout from "./FooterLayout.astro";
-const { pageTitle } = Astro.props;
-const { siteTitle = "Flynn's Blog" } = Astro.props;
-const { description = "Flynn 的个人博客 · fall into Flynn’s nook" } = Astro.props;
+import '@fontsource-variable/source-serif-4';
+import '../styles/global.css';
+import HeaderLayout from './HeaderLayout.astro';
+import FooterLayout from './FooterLayout.astro';
+import Seo from '../components/Seo.astro';
+import { SITE_LANG } from '../lib/site';
+
+interface Props {
+  pageTitle?: string;
+  description?: string;
+  ogType?: 'website' | 'article';
+  publishedTime?: string;
+  showTitle?: boolean;
+}
+
+const { pageTitle = '', description, ogType, publishedTime, showTitle = Boolean(pageTitle) } = Astro.props;
+const scrollThreshold = 300;
 ---
 
-<html lang="zh-CN" class="scroll-smooth">
+<html lang={SITE_LANG} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>{pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle}</title>
-    <!-- Open Graph -->
-    <meta property="og:title" content={pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <Seo title={pageTitle} description={description} ogType={ogType} publishedTime={publishedTime} />
     <script is:inline>
-      // 在页面加载前立即设置主题，避免闪烁
-      (function() {
+      (function () {
         const theme = localStorage.getItem('theme');
-        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (theme === 'dark' || (!theme && prefersDark)) {
           document.documentElement.classList.add('dark');
         }
       })();
     </script>
   </head>
   <body
-    class="min-h-screen flex flex-col bg-stone-50 text-gray-800 dark:bg-neutral-900 dark:text-gray-200 transition-colors duration-300"
+    class="flex min-h-screen flex-col bg-stone-50 text-gray-800 transition-colors duration-300 dark:bg-neutral-900 dark:text-gray-200"
   >
-    <!-- Header -->
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-gray-900 focus:ring-2 focus:ring-blue-400 dark:focus:bg-neutral-800 dark:focus:text-gray-100"
+    >
+      跳到正文
+    </a>
     <HeaderLayout />
-
-    <!-- 内容区域 -->
-    <main class="flex-grow container mx-auto max-w-4xl prose dark:prose-invert py-8 px-4">
-      {pageTitle && <h1 class="mb-8">{pageTitle}</h1>}
+    <main id="main" class="mx-auto w-full max-w-4xl flex-grow px-4 py-8">
+      {showTitle && <h1 class="mb-8 font-serif text-3xl font-bold text-gray-900 dark:text-gray-100">{pageTitle}</h1>}
       <slot />
     </main>
-
-    <!-- 回到顶部按钮 -->
     <button
       id="back-to-top"
+      type="button"
       aria-label="回到顶部"
-      class="fixed bottom-8 right-8 p-2 rounded-full bg-blue-500 dark:bg-blue-600 text-white shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-600 dark:hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+      tabindex="-1"
+      class="invisible fixed bottom-8 right-8 inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-blue-500 text-white opacity-0 shadow-lg transition-all duration-300 hover:bg-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 dark:bg-blue-600 dark:hover:bg-blue-500"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
       </svg>
     </button>
-
-    <!-- Footer -->
     <FooterLayout />
+    <script is:inline define:vars={{ scrollThreshold }}>
+      document.addEventListener('DOMContentLoaded', () => {
+        const backToTopButton = document.getElementById('back-to-top');
+        if (!backToTopButton) return;
 
-    <script is:inline>
-      document.addEventListener("DOMContentLoaded", () => {
-        // 回到顶部按钮
-        const backToTopButton = document.getElementById("back-to-top");
-        if (backToTopButton) {
-          window.addEventListener("scroll", () => {
-            if (window.scrollY > 300) {
-              backToTopButton.classList.remove("opacity-0", "invisible");
-              backToTopButton.classList.add("opacity-100", "visible");
-            } else {
-              backToTopButton.classList.add("opacity-0", "invisible");
-              backToTopButton.classList.remove("opacity-100", "visible");
-            }
-          });
+        const sync = () => {
+          const visible = window.scrollY > scrollThreshold;
+          backToTopButton.classList.toggle('opacity-100', visible);
+          backToTopButton.classList.toggle('visible', visible);
+          backToTopButton.classList.toggle('opacity-0', !visible);
+          backToTopButton.classList.toggle('invisible', !visible);
+          backToTopButton.tabIndex = visible ? 0 : -1;
+        };
 
-          backToTopButton.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          });
-        }
+        sync();
+        window.addEventListener('scroll', sync, { passive: true });
+        backToTopButton.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
       });
     </script>
   </body>

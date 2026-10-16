@@ -1,10 +1,10 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "《我的最后一本减肥书》读书笔记"
+description: "感谢仰望尾迹云的《我的最后一本减肥书》，让我了解到很多曾经完全不知道的知识。"
+pubDate: 2022-12-06
 tags: ["书籍"]
-weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "My-Notes-on-My-Last-Diet-Book" # 请在此处填写英文 slug，如: my-article-name
-pubDate: 2022-12-06 00:15:11
+weight: 1
+draft: true
 ---
 
 > 感谢[仰望尾迹云](https://www.zhihu.com/people/yang-wang-wei-ji-yun)的《我的最后一本减肥书》，让我了解到很多曾经完全不知道的知识。

@@ -1,0 +1,41 @@
+---
+import type { MarkdownHeading } from 'astro';
+import type { BlogPost } from '../lib/posts';
+import { formatPostDate } from '../lib/dates';
+import { SITE_AUTHOR, SITE_URL } from '../lib/site';
+import BaseLayout from './BaseLayout.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+
+interface Props {
+  post: BlogPost;
+  headings: MarkdownHeading[];
+}
+
+const { post, headings } = Astro.props;
+const published = formatPostDate(post.data.pubDate);
+const canonical = new URL(`/posts/${post.id}`, SITE_URL).href;
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: published,
+  author: { '@type': 'Person', name: SITE_AUTHOR },
+  mainEntityOfPage: canonical,
+}).replace(/</g, '\\u003c');
+---
+
+<BaseLayout
+  pageTitle={post.data.title}
+  description={post.data.description}
+  ogType="article"
+  publishedTime={published}
+  showTitle={false}
+>
+  <article class="prose max-w-none dark:prose-invert">
+    <h1 class="mb-8">{post.data.title}</h1>
+    <TableOfContents headings={headings} />
+    <slot />
+  </article>
+  <script type="application/ld+json" set:html={jsonLd} />
+</BaseLayout>

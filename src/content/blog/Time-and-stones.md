@@ -1,10 +1,9 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "时间有的是，就是缺石头"
+description: "肖申克的救赎这部巨作，给我留下了非常深的印象，看了不下四五遍后，有一句影响到了，点醒了我"
+pubDate: 2021-12-12
 tags: ["日常"]
-pubDate: 2021-12-12 23:28:10
-weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "Time-and-stones" # 请在此处填写英文 slug，如: my-article-name
+weight: 1
 ---
 
 ###### 肖申克的救赎这部巨作，给我留下了非常深的印象，看了不下四五遍后，有一句影响到了，点醒了我

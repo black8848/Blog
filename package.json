@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "flynn-blog",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -8,19 +8,22 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "check": "astro check",
     "add-frontmatter": "node src/scripts/add-frontmatter.js"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
     "@astrojs/tailwind": "^6.0.2",
+    "@fontsource-variable/source-serif-4": "^5.3.1",
     "astro": "^5.16.11",
     "rehype-external-links": "^3.0.0",
-    "remark-footnotes": "^4.0.1",
     "tailwindcss": "^3.4.17",
-    "tslib": "^2.8.1",
-    "typescript": "^5.8.3"
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.15"
+    "@astrojs/check": "^0.9.10",
+    "@tailwindcss/typography": "^0.5.15",
+    "typescript": "^5.9.3"
   }
 }

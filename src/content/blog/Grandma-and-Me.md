@@ -1,10 +1,10 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "姥姥与我"
+description: "忽然想起一件往事，小的时候，有一个我想不起来的特别的日子。"
+pubDate: 2022-10-16
 tags: ["往事"]
-pubDate: 2022-10-16 22:12:19
-weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "Grandma-and-Me" # 请在此处填写英文 slug，如: my-article-name
+weight: 1
+draft: true
 ---
 忽然想起一件往事，小的时候，有一个我想不起来的特别的日子。
 

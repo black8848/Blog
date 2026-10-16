@@ -1,10 +1,10 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "记录日常-大一上学期的最后二十天"
+description: "29号就可以跟楠楠见面啦~ 还有最后的二十天 也是这学期的最后二十天@.@"
+pubDate: 2021-12-10
 tags: ["日常"]
-pubDate: 2021-12-10 23:13:52
-weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "Meet" # 请在此处填写英文 slug，如: my-article-name
+weight: 1
+draft: true
 ---
 ## 见面
 ***

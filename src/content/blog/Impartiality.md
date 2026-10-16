@@ -1,10 +1,10 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "公正"
-pubDate: 2022-09-22 02:57:12
+description: "这篇文章包含了很多对媒体的思考，可能会引起不适。"
+pubDate: 2022-09-22
 tags: ["思考"]
-weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "Impartiality" # 请在此处填写英文 slug，如: my-article-name
+weight: 1
+draft: true
 ---
 
 > 这篇文章包含了很多对媒体的思考，可能会引起不适。

@@ -1,10 +1,9 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "英语!"
+description: "英语太重要了，想翻阅的各种文档，各种很新的技术，其网站无一例外全是英文。"
+pubDate: 2022-10-12
 tags: ["学习"]
-pubDate: 2022-10-12 23:15:15
-weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "English" # 请在此处填写英文 slug，如: my-article-name
+weight: 1
 ---
 
 英语太重要了，想翻阅的各种文档，各种很新的技术，其网站无一例外全是英文。

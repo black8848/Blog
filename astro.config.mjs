@@ -1,19 +1,30 @@
-import { defineConfig } from 'astro/config'
+import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import remarkFootnotes from 'remark-footnotes';
+import sitemap from '@astrojs/sitemap';
 import rehypeExternalLinks from 'rehype-external-links';
+import { legacyPostRedirects } from './src/lib/legacy-redirects.mjs';
+import { rehypeLazyImages } from './src/lib/rehype-lazy-images.mjs';
+import { SITE_URL } from './src/lib/site-config.mjs';
 
 export default defineConfig({
-  // your configuration options here...
-  // https://docs.astro.build/en/reference/configuration-reference/
-
-  integrations: [tailwind()],
-
-  // 配置文章 URL 格式
+  site: SITE_URL,
+  prefetch: true,
+  integrations: [tailwind(), sitemap()],
+  redirects: legacyPostRedirects,
   markdown: {
-    remarkPlugins: [[remarkFootnotes, { inlineNotes: true }]],
+    shikiConfig: {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+      defaultColor: false,
+      langAlias: {
+        C: 'c',
+      },
+    },
     rehypePlugins: [
-      [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }]
-    ]
-  }
-})
+      [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
+      rehypeLazyImages,
+    ],
+  },
+});

@@ -1,10 +1,9 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "靠什么证明自己来过"
+description: "想象一下，年老之后，留给我的是什么"
 pubDate: 2025-07-11
 tags: ["Blog"]
 weight: 0
-slug: "Learn_to_Summarize"
 ---
 
 想象一下，年老之后，留给我的是什么

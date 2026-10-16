@@ -1,10 +1,10 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "记一次 Mac 装双系统的经历"
+description: "本次经历纯靠装完后用脑回想之前的步骤，可能有所差错（所以配图也有所缺失） - 本次装机用的是Intel版本的14年的老款MacBook Pro ，新款步骤可能不一样 - 具体步骤请前往苹果官方教程"
+pubDate: 2022-03-18
 tags: ["系统"]
-pubDate: 2022-03-18 20:42:29
-weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "Recounting-My-Experience-Installing-a-Dual-Boot-System-on-a-Mac" # 请在此处填写英文 slug，如: my-article-name
+weight: 1
+draft: true
 ---
 #### 注意
 - **本次经历纯靠装完后用脑回想之前的步骤，可能有所差错（所以配图也有所缺失）**

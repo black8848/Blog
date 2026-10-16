@@ -1,10 +1,10 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "因 Minecraft 而起的内存升级大乌龙"
+description: "我电脑的内存本来是 16 G的，本来是对于正常需求，应该是足足够用的。"
+pubDate: 2023-02-14
 tags: ["日常"]
-pubDate: 2023-02-14 21:09:51
-weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "The-Great-Memory-Upgrade-Fiasco-Caused-by-Minecraft" # 请在此处填写英文 slug，如: my-article-name
+weight: 1
+draft: true
 ---
 
 我电脑的内存本来是 16 G的，本来是对于正常需求，应该是足足够用的。

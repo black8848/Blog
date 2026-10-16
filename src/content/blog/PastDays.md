@@ -1,10 +1,10 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: "过往"
+description: "今天翻了翻曾经写过的博客，看到了大一时记录的很多内容，感受到当时写文章的语风语气，这四年真的变化这么大吗？"
 pubDate: 2025-07-10
 tags: ["Blog"]
-weight: 1 # 文章权重，用于同日期文章排序，数字越大排序越靠前
-slug: "PastDays" # 请在此处填写英文 slug，如: my-article-name
+weight: 1
+draft: true
 ---
 
 今天翻了翻曾经写过的博客，看到了大一时记录的很多内容，感受到当时写文章的语风语气，这四年真的变化这么大吗？
